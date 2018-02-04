@@ -133,6 +133,14 @@ ja:
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
       other_than: は%{count}以外の値にしてください
+      already_confirmed: "は既に登録済みです。ログインしてください"
+      confirmation_period_expired: "%{period}以内に確認する必要がありますので、新しくリクエストしてください。"
+      expired: "有効期限切れです。新しくリクエストしてください。"
+      not_found: "は見つかりませんでした。"
+      not_locked: "ロックされていません。"
+      not_saved:
+        one: "1つのエラーにより%{resource} を保存できませんでした。"
+        other: "%{count} 個のエラーにより%{resource} を保存できませんでした。"
     template:
       body: 次の項目を確認してください
       header:
