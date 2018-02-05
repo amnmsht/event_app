@@ -1,11 +1,27 @@
+/**body要素**/
 body {
   padding-top: 50px;
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 150px;
 }
 
-body {
- height:100vh;
+.container{
+    padding-bottom: 50px;    
+    
 }
 
+/**フラッシュの設定**/
+.alert-notice {
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+.alert-alert {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+/**全体的な文字サイズ**/
 h1, h2, h3, h4, h5, h6, p,li {
   /**text-align: center;**/
   font-family: 'Playfair Display', sans-serif ;  
@@ -16,6 +32,7 @@ h1, h2, h3, h4, h5, h6, p,li {
  }
 
 
+/**フッターの設定**/
  .footer{
   height:45px;
   background-color: #f8f8f8;
@@ -32,3 +49,35 @@ h1, h2, h3, h4, h5, h6, p,li {
     text-align: center;
  }
  
+ 
+ /**TOP画面ここから追加**/
+ .jumbotron-extend {
+    height: 100vh;
+    min-height: 350px;
+    margin-bottom: 60px;
+    background: url("*****.jpg") no-repeat center center;
+    background-size: cover;
+}
+.jumbotron-container {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.site-name {
+    margin-bottom: 60px;
+    font-family: 'Playfair Display', sans-serif;
+}
+.btn-black {
+    border-radius: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Avenir', serif;
+}
+.btn-black:hover {
+    background-color: #fff;
+    color: #000;
+}
