@@ -21,6 +21,7 @@ body {
   color: #a94442;
 }
 
+
 /**全体的な文字サイズ**/
 h1, h2, h3, h4, h5, h6, p,li {
   /**text-align: center;**/
@@ -55,7 +56,7 @@ h1, h2, h3, h4, h5, h6, p,li {
     height: 100vh;
     min-height: 350px;
     margin-bottom: 60px;
-    background: url("*****.jpg") no-repeat center center;
+    background: url("/budo.jpg") no-repeat center center;
     background-size: cover;
 }
 .jumbotron-container {
@@ -68,9 +69,11 @@ h1, h2, h3, h4, h5, h6, p,li {
     padding-right: 30px;
 }
 .site-name {
+    color: #fff;
     margin-bottom: 60px;
     font-family: 'Playfair Display', sans-serif;
 }
+
 .btn-black {
     border-radius: 0;
     background-color: #000;
