@@ -1,3 +1,5 @@
+<div class="container show-container">
+
 <div class = "page-header">
   <h1>
     <%= @event.title %>
@@ -45,4 +47,5 @@
     <%= link_to "イベントを編集する",edit_event_path(@event),class:'btn btn-info btn-lg btn-block',data: { confirm: '本当に編集していいですか？' } %>
     <%= link_to "イベントを削除する",event_path(@event),class:'btn btn-danger btn-lg btn-block',method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
   </div>
+</div>
 </div>

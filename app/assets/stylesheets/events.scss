@@ -6,10 +6,11 @@ body {
   padding-bottom: 150px;
 }
 
-.container{
-    padding-bottom: 50px;    
-    
+/**イベント詳細画面にのみ適用。高さを確保**/
+.show-container{
+    padding-bottom: 50px;
 }
+
 
 /**フラッシュの設定**/
 .alert-notice {
@@ -52,13 +53,19 @@ h1, h2, h3, h4, h5, h6, p,li {
  
  
  /**TOP画面ここから追加**/
+ 
+ .container-fluid {
+  max-width: auto;
+}
+
  .jumbotron-extend {
     height: 100vh;
     min-height: 350px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     background: url("/budo.jpg") no-repeat center center;
     background-size: cover;
 }
+
 .jumbotron-container {
     position: relative;
     top: 50%;
@@ -68,19 +75,33 @@ h1, h2, h3, h4, h5, h6, p,li {
     padding-left: 30px;
     padding-right: 30px;
 }
+.jumbotron h1{
+      color: #fff;  
+}
+
 .site-name {
-    color: #fff;
     margin-bottom: 60px;
     font-family: 'Playfair Display', sans-serif;
 }
 
-.btn-black {
+.btn-default {
     border-radius: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Avenir', serif;
-}
-.btn-black:hover {
     background-color: #fff;
-    color: #000;
+    color: #990066;
+    font-family: 'Avenir', sans-serif;
+}
+.btn-default:hover {
+    background-color: #990066;
+    color: #fff;
+}
+
+/**ログイン周りのcss**/
+.field{
+  margin-bottom: 5px;
+}
+
+.main-header img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }

@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -31,6 +32,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   
   config.action_mailer.default_url_options = { host: 'rails-training-amnmsht084.c9users.io/' }
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
