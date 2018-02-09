@@ -1,7 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
-config.action_mailer.default_url_options = { host: 'sheltered-fjord-47620.herokuapp.com/' }
+config.action_mailer.default_url_options = { host: 'https://sheltered-fjord-47620.herokuapp.com/' }
+config.action_mailer.raise_delivery_errors = false
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings =
 {
