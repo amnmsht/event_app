@@ -13,6 +13,8 @@
         主催者
       </div>
     <div class="panel-body">
+    <%= image_tag(@event.user.image_url) if @event.user.image_url.present? %>
+    <%= @event.user.name %>
   </div>
 </div>
 
@@ -43,9 +45,22 @@
   </div>
 </div>
 </div>
+
   <div class="col-md-4">
+    <% if current_user.id == @event.user_id %>
     <%= link_to "イベントを編集する",edit_event_path(@event),class:'btn btn-info btn-lg btn-block',data: { confirm: '本当に編集していいですか？' } %>
     <%= link_to "イベントを削除する",event_path(@event),class:'btn btn-danger btn-lg btn-block',method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+    <% end %>
   </div>
+  
+<div class="col-md-4">  
+  <% unless @event.user == current_user %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(event_id: @event.id), method: :delete, class:'btn btn-danger btn-lg btn-block' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(event_id: @event.id), method: :post, class:'btn btn-info btn-lg btn-block' %>
+  <% end %>
+</div>  
+<% end %>
 </div>
 </div>

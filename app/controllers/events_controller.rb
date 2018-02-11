@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     
     def create
       @event= Event.new(event_params)
+      @event.user_id = current_user.id 
       if @event.save
         flash[:success] = 'イベントを作成しました！'
         redirect_to new_event_path
@@ -25,6 +26,7 @@ class EventsController < ApplicationController
     
     def show
         #@event = Event.find(params[:id])
+        @favorite = current_user.favorites.find_by(event_id: @event.id)
     end
     
     def edit

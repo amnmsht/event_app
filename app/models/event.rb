@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+    belongs_to :user, optional: true
+    has_many :favorites, dependent: :destroy
+    has_many :favorite_users, through: :favorites, source: :user
     validates :title, length: { maximum: 50 }, presence: true
     validates :place, length: {maximum: 100}, presence: true
     validates :content, length: {maximum: 2000 }, presence: true
