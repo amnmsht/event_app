@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   
   
     root "events#top"
-    resources :events
-    resources :users, :only => [:index, :show]
+    resources :events, shallow: true do
+      resources :entries, only: [:create, :destroy]
+      
+    #resources :users, :only => [:index, :show]
     resources :users, only: [:show]
     resources :favorites, only: [:create, :destroy]
     
     end
+  end

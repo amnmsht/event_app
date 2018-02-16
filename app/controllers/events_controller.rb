@@ -27,6 +27,9 @@ class EventsController < ApplicationController
     def show
         #@event = Event.find(params[:id])
         @favorite = current_user.favorites.find_by(event_id: @event.id)
+        @entry = current_user && current_user.entries.find_by(event_id: params[:id])
+        @entries = @event.entries.includes(:user).order(:created_at)
+        
     end
     
     def edit

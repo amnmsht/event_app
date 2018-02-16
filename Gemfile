@@ -30,9 +30,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
   gem 'bcrypt', '3.1.11'
-  
   gem 'carrierwave'
   gem 'mini_magick'
+  gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+  gem 'rails-ujs'
+
 
 
 # Use Capistrano for deployment
