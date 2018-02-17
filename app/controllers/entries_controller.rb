@@ -7,6 +7,7 @@ class EntriesController < ApplicationController
   end
   
   if entry.save
+    EntryMailer.entry_mail(entry).deliver
     flash[:notice] = "このイベントに申し込みました"
     head 201
   else
