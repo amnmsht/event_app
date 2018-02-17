@@ -18,7 +18,7 @@ class EventsController < ApplicationController
       @event.user_id = current_user.id 
       if @event.save
         flash[:success] = 'イベントを作成しました！'
-        redirect_to new_event_path
+        redirect_to @event
         else
           render 'new'
         end
@@ -56,7 +56,7 @@ class EventsController < ApplicationController
     
     private
     def event_params
-      params.require(:event).permit(:title,:content,:place,:start_time,:end_time)  
+      params.require(:event).permit(:title, :place, :image, :image_cache, :start_time, :end_time, :content)
   end
   
   def set_event

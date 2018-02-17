@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+    mount_uploader :image, ImageUploader
     has_many :entries
     belongs_to :user, optional: true
     has_many :favorites, dependent: :destroy
