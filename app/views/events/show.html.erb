@@ -8,12 +8,42 @@
 
 <div class="row">
   <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        開催場所
+      </div>
+      <div class="panel-body">
+        <div id="map"></div>
+          <style>
+          #map {
+          height: 400px;
+          width: 100%;
+          }
+          </style>
+          <script>
+            function initMap() {
+              var uluru = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+              var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16,
+              center: uluru
+              });
+              var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+              });
+              }
+          </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpJNOZ3g_RYqXK8fCOcq4736n-XHe-4W8&callback=initMap"
+      async defer></script>
+      </div>
+    </div>
+
     <div class="thumbnail">
       <%= image_tag(@event.image_url) if @event.image.present? %>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        主催者
+        イベントの主催者
       </div>
       <div class="panel-body">
         <%= image_tag(@event.user.image_url) if @event.user.image_url.present? %>
@@ -32,7 +62,7 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        開催場所
+        開催場所（住所）
       </div>
       <div class="panel-body">
         <%= @event.place %>
@@ -41,7 +71,7 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        イベント内容
+        イベントの概要
       </div>
       <div class="panel-body">
         <%= @event.content %>
@@ -52,7 +82,7 @@
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        参加者
+        参加予定者
       </div>
       <div class ="panel-body">
         <ul class="list=unstyled">

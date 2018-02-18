@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
   gem 'mini_magick'
   gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
   gem 'rails-ujs'
+  gem 'geocoder'
 
 
 

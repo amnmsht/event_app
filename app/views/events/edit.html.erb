@@ -15,7 +15,6 @@
     </div>
   <% end %>
 
-<%= form_with(model: @event, local: true) do |form| %>
   <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control" %>
@@ -27,7 +26,7 @@
   </div>
   
   <div class="form-group">
-  <%= form.label :"イベントのイメージ" %>
+  　<%= form.label :"イベントのイメージ" %>
     <div class="thumbnail">
       <%= form.file_field :image, id: :event_image %>
       <%= form.hidden_field :image_cache %>
@@ -49,6 +48,5 @@
     <%= form.text_field :content, class: "form-control",row: 10 %>
   </div>
   <%= form.submit "更新",class: 'btn btn-default', data: { disable_with: "更新中..." } %>
-<% end %>
 <% end %>
 </div>

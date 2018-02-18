@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
     mount_uploader :image, ImageUploader
+    
     has_many :entries
     belongs_to :user, optional: true
     has_many :favorites, dependent: :destroy
@@ -10,6 +11,9 @@ class Event < ApplicationRecord
     validates :start_time, presence: true
     validates :end_time, presence: true
     validate :start_time_should_be_before_end_time
+    
+    geocoded_by :place
+    after_validation :geocode, if: :place_changed?
     
     private
     

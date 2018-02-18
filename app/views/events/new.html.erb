@@ -14,9 +14,7 @@
       </ul>
     </div>
   <% end %>
-
-<%= form_with(model: @event, local: true) do |form| %>
-
+  
   <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control" %>
@@ -50,6 +48,5 @@
     <%= form.text_field :content, class: "form-control",row: 10 %>
   </div>
   <%= form.submit "作成",class: 'btn btn-default', data: { disable_with: "作成中..." } %>
-<% end %>
 <% end %>
 </div>
