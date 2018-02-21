@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contacts/contact'
+
     if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
     end
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   
   
     root "events#top"
+    resources :contacts, only: [:new, :create]
     resources :events, shallow: true do
       resources :entries, only: [:create, :destroy]
       

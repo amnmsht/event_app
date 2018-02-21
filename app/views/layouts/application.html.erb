@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Farmers support</title>
+    <title>Farmer's support</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -18,13 +18,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>  
-        <a class="navbar-brand" href="/">Farmers support</a>
+        <a class="navbar-brand" href="/">Farmer'sサプリ</a>
         </div>
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="nav navbar-nav">
             <!--<li><%= link_to "TOP",root_path %></li>-->
             <li><%= link_to "新規イベント",new_event_path %></li>
             <li><%= link_to "イベント一覧",events_path %></li>
+            <li><%= link_to "Contat us",new_contact_path %></li>
             <% if user_signed_in? %> 
             <li><%= link_to "Login As: #{current_user.name}", user_path(current_user.id) %></li>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>

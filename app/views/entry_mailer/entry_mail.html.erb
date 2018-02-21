@@ -2,8 +2,11 @@
 
 <p><%= "#{@entry.event.user.name}のイベントに申込みがありました" %></p>
 
-<h4>参加者: <%= @entry.user.name %></h4>
+<h4>参加者名: <%= @entry.user.name %></h4>
 
 <h4>コメント</h4>
 
 <p><%= @entry.comment %></p>
+
+<h4>連絡先</h4>
+<%= @entry.user.email %>
