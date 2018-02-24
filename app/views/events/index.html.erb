@@ -1,6 +1,20 @@
 <div class="container index-container">
-<div class="page-header">
-  <h1>イベント一覧</h1>
+  <div class="page-header">
+    <h1>イベント一覧</h1>
+  </div>
+<div>
+  <%= search_form_for(@q,class: 'well') do |f| %>
+  <div class="form-group">
+    <%= f.label :title_or_content_cont, 'タイトル・イベント内容・場所で検索' %>
+    <%= f.text_field :title_or_content_or_place_cont, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_time_gteq, '開催日で検索' %>
+    <div>
+      <%= f.date_select :start_time_gteq  %>〜
+    </div>
+  </div>
+  <%= f.submit '検索', class: 'btn btn-default' %>
 </div>
 <div class="list-group">
   <% @events.each do |event| %>
@@ -13,6 +27,7 @@
      </p>
      <% end %>
    <% end %>
-  </div>
+</div>
   <%= paginate @events %>
 </div>
+<% end %>

@@ -149,9 +149,11 @@ h1, h2, h3, h4, h5, h6, p,li {
 
 /*クリックで中身表示*/
 .hidden_box input:checked ~ .hidden_show {
-    padding: 10px 0;
+    padding: 10px 10px;
     height: auto;
     opacity: 1;
+    background-color: #BDB76B;
+    width: 700px;
 }
 
 .jumbotron p{
@@ -159,5 +161,15 @@ h1, h2, h3, h4, h5, h6, p,li {
       color: #fff;
       font-size:18px;
       font-family: 'Playfair Display', sans-serif ; 
-      
+}
+
+.sort_link{
+  color: white;
+  text-decoration:none;
+  outline: none;
+}
+
+.sort_link:hover {
+    color: #fff;
+    text-decoration:none;
 }

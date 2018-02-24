@@ -2,13 +2,19 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
     
-    PER = 2
+    PER = 5
     
     def top
     end
     
     def index
-        @events = Event.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time)
+        #@events = Event.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time)←もとの状態
+         @q = Event.ransack(params[:q])
+         @events = @q.result(distinct: true)
+  
+        respond_to do |format|
+      format.html { @events = @events.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time) }
+      end
     end
     
     def new
