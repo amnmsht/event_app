@@ -6,6 +6,10 @@ body {
   padding-bottom: 150px;
 }
 
+.navbar-nav{
+  float:right;
+}
+
 /**イベント詳細画面にのみ適用。高さを確保**/
 .show-container{
     padding-bottom: 50px;
@@ -25,8 +29,9 @@ body {
 
 /**全体的な文字サイズ**/
 h1, h2, h3, h4, h5, h6, p,li {
-  /**text-align: center;**/
-  font-family: 'Playfair Display', sans-serif ;  
+  text-align: center;
+  /**font-family: 'Playfair Display', sans-serif ;**/
+  font-family: arial, sans-serif;
 }
 
  ul li {
@@ -76,7 +81,8 @@ h1, h2, h3, h4, h5, h6, p,li {
     padding-right: 30px;
 }
 .jumbotron h1, h2, h3{
-      color: #fff;  
+  color: #fff;
+  text-align: center;
 }
 
 .site-name {
@@ -116,6 +122,8 @@ h1, h2, h3, h4, h5, h6, p,li {
     padding: 0;
     margin-bottom: 60px;
     font-family: 'Playfair Display', sans-serif;
+    text-align: center;
+    
 }
 
 /*ボタン装飾*/
@@ -152,7 +160,7 @@ h1, h2, h3, h4, h5, h6, p,li {
     padding: 10px 10px;
     height: auto;
     opacity: 1;
-    /**background-color: #BDB76B;**/
+    background-color: #BDB76B;
     width: auto;
 }
 
@@ -173,4 +181,30 @@ h1, h2, h3, h4, h5, h6, p,li {
 .sort_link:hover {
     color: #fff;
     text-decoration:none;
+}
+
+.list-group-item-text{
+  text-align: left;
+}
+
+.list-group-item-text{
+  text-align: left;
+}
+
+.list-group-item-heading{
+  text-align: left;   
+}
+
+.form-group{
+  text-align: center;
+  font-family: 'Playfair Display', sans-serif;
+}
+
+.field{
+  text-align: center;
+  font-family: 'Playfair Display', sans-serif;
+}
+
+.index-submit{
+  text-align: center;  
 }

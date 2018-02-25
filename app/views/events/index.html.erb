@@ -1,6 +1,6 @@
 <div class="container index-container">
   <div class="page-header">
-    <h1>イベント一覧</h1>
+    <h1>イベントの一覧</h1>
   </div>
 <div>
   <%= search_form_for(@q,class: 'well') do |f| %>
@@ -14,7 +14,9 @@
       <%= f.date_select :start_time_gteq  %>〜
     </div>
   </div>
-  <%= f.submit '検索', class: 'btn btn-default' %>
+    <div class = "index-submit">
+      <%= f.submit '検索', class: 'btn btn-primary' %>
+    </div>
 </div>
 <div class="list-group">
   <% @events.each do |event| %>

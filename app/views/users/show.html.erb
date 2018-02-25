@@ -1,22 +1,37 @@
 <div class="container user_show-container">
-
   <div class="page-header">
-    <h1>マイページ (<%= @user.name %>)</h1>
+    <h1><%= @user.name %>さんのMy Page </h1>
   </div>
-
   <div class="page-header">
-    <h1>お気に入りイベントの一覧</h1>
+    <h1>お気に入りイベント</h1>
   </div>
-  
-<div class="list-group">
-  <% @favorites_events.each do |favorite_event| %>
-   <%= link_to(favorite_event.event, class: 'list-group-item') do %>
-     <h4 class="list-group-item-heading">
-       <%= favorite_event.event.title %>
-     </h4>
-     <p class="list-group-item-text">
-       <%= favorite_event.event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= favorite_event.event.end_time.strftime('%Y/%m/%d %H:%M') %>
-     </p>
-     <% end %>
-   <% end %>
-</div> 
+  <div class="list-group">
+    <% @favorites_events.each do |favorite_event| %>
+    <%= link_to(favorite_event.event, class: 'list-group-item') do %>
+      <h4 class="list-group-item-heading">
+        <%= favorite_event.event.title %>
+      </h4>
+        <p class="list-group-item-text">
+         <%= favorite_event.event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= favorite_event.event.end_time.strftime('%Y/%m/%d %H:%M') %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-header">
+    <h1>参加予定のイベント</h1>
+  </div>
+  <div class="list-group">
+    <% current_user.entries.each do |entry_event| %>
+    <%= link_to(entry_event.event, class: 'list-group-item') do %>
+      <h4 class="list-group-item-heading">
+        <%= entry_event.event.title %>
+      </h4>
+        <p class="list-group-item-text">
+          <%= entry_event.event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= entry_event.event.end_time.strftime('%Y/%m/%d %H:%M') %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
