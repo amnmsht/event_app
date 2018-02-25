@@ -41,7 +41,7 @@
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        イベントの概要
+        イベントの概要（お申込みいただくと主催者に参加メールが送信されます）
       </div>
       <div class="panel-body">
         <%= @event.content %>
@@ -49,7 +49,7 @@
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        開催場所
+        開催場所までのアクセス
       </div>
       <div class="panel-body">
         <div id="map"></div>
@@ -89,8 +89,8 @@
           <li>
             <%= image_tag(entry.user.image_url, width: 20, height: 20) if entry.user.image_url.present?  %>
             <%= entry.user.name %>
+            <%= entry.comment %>
             <% end %>
-            <%= @entry.comment %>
           </li>
           <% end %>
         </ul>
