@@ -20,16 +20,16 @@
 </div>
 <div class="list-group">
   <% @events.each do |event| %>
-   <%= link_to(event, class: 'list-group-item') do %>
-     <h4 class="list-group-item-heading">
-       <%= event.title %>
-     </h4>
-     <p class="list-group-item-text">
-       <%= event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= event.end_time.strftime('%Y/%m/%d %H:%M') %>
-     </p>
-     <% end %>
-   <% end %>
+    <%= link_to(event, class: 'list-group-item') do %>
+      <h4 class="list-group-item-heading">
+        <%= event.title %>
+      </h4>
+      <p class="list-group-item-text">
+        <%= event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= event.end_time.strftime('%Y/%m/%d %H:%M') %>
+      </p>
+      <% end %>
+      <% end %>
+    <%= paginate @events %>
+    <% end %>
+  </div>
 </div>
-  <%= paginate @events %>
-</div>
-<% end %>

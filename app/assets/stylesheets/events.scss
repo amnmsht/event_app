@@ -6,6 +6,10 @@ body {
   padding-bottom: 150px;
 }
 
+.wrapper {
+  padding-bottom: 50px; 
+}
+
 .navbar-nav{
   float:right;
 }
@@ -13,6 +17,10 @@ body {
 /**イベント詳細画面にのみ適用。高さを確保**/
 .show-container{
     padding-bottom: 50px;
+}
+
+user_show-container{
+    padding-bottom: 50px;    
 }
 
 
