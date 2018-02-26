@@ -53,8 +53,10 @@
   <div class="actions">
     <%= f.submit "更新",class: 'btn btn-primary btn-block', data: { disable_with: "更新しています..." } %>
   </div>
-<% end %>
+  <% end %>
 
-<p><%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class: 'btn btn-danger btn-block', data: { disable_with: "解約しています..." } %></p>
+  <p><%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class: 'btn btn-danger btn-block', data: { disable_with: "解約しています..." } %></p>
 
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back %>
+  </div>
+</div>
