@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_many :favorite_events, through: :favorites,source: :event
   has_many :entries
+  has_many :entry_events, through: :entries,source: :event
   
    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:facebook,:twitter] #%i(facebook twitter)から記述変更

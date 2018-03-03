@@ -56,11 +56,16 @@ class EventsController < ApplicationController
   
     def destroy
       #@event = Event.find(params[:id])
+      if @event.entries.present?
+      flash[:danger] = "参加申し込み者のいるイベントは削除できません" 
+      redirect_to events_path
+      
+      else
       @event.destroy
-      flash[:success] = "削除しました！"
+      flash[:success] = "イベントを削除しました！"
       redirect_to events_path
     end
-
+  end
     
     private
     def event_params
