@@ -7,10 +7,10 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :entry_events, through: :entries,source: :event
   
-   devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:facebook,:twitter] #%i(facebook twitter)から記述変更
     
-    mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader
   
   validates :name,  presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 }
@@ -21,12 +21,12 @@ class User < ActiveRecord::Base
 
     unless user
       user = User.new(
-          name:     auth.extra.raw_info.name,
-          provider: auth.provider,
-          uid:      auth.uid,
-          email:    "#{auth.uid}-#{auth.provider}@example.com",
-          image_url:   auth.info.image,
-          password: Devise.friendly_token[0, 20]
+        name:     auth.extra.raw_info.name,
+        provider: auth.provider,
+        uid:      auth.uid,
+        email:    "#{auth.uid}-#{auth.provider}@example.com",
+        image_url:   auth.info.image,
+        password: Devise.friendly_token[0, 20]
       )
       user.skip_confirmation!
       user.save(validate: false)

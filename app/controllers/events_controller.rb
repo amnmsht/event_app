@@ -6,19 +6,18 @@ class EventsController < ApplicationController
     
     def top
     end
-    
+
+  #@events = Event.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time)←もとの状態    
     def index
-        #@events = Event.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time)←もとの状態
-         @q = Event.ransack(params[:q])
-         @events = @q.result(distinct: true)
-  
-        respond_to do |format|
+      @q = Event.ransack(params[:q])
+      @events = @q.result(distinct: true)
+      respond_to do |format|
       format.html { @events = @events.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time) }
-      end
     end
+  end
     
     def new
-        @event = Event.new
+      @event = Event.new
     end
     
     def create
@@ -27,52 +26,50 @@ class EventsController < ApplicationController
       if @event.save
         flash[:success] = 'イベントを作成しました！'
         redirect_to @event
-        else
-          render 'new'
-        end
+      else
+        render :new
       end
-    
+    end
+
+    #@event = Event.find(params[:id])    
     def show
-        #@event = Event.find(params[:id])
-        @favorite = current_user.favorites.find_by(event_id: @event.id)
-        @entry = current_user && current_user.entries.find_by(event_id: params[:id])
-        @entries = @event.entries.includes(:user).order(:created_at)
-        
+      @favorite = current_user.favorites.find_by(event_id: @event.id)
+      @entry = current_user && current_user.entries.find_by(event_id: params[:id])
+      @entries = @event.entries.includes(:user).order(:created_at)
     end
     
     def edit
-      #@event = Event.find(params[:id])
     end
+    #@event = Event.find(params[:id])
     
     def update
-      #@event = Event.find(params[:id])
       if @event.update(event_params)
         flash[:success] = "更新しました！"
         redirect_to @event
       else
-        render 'edit'
+        render :edit
       end
     end
+    #@event = Event.find(params[:id])    
   
     def destroy
-      #@event = Event.find(params[:id])
       if @event.entries.present?
-      flash[:danger] = "参加申し込み者のいるイベントは削除できません" 
-      redirect_to events_path
-      
+        flash[:danger] = "参加申し込み者のいるイベントは削除できません" 
+        redirect_to events_path
       else
-      @event.destroy
-      flash[:success] = "イベントを削除しました！"
-      redirect_to events_path
+        @event.destroy
+        flash[:success] = "イベントを削除しました！"
+        redirect_to events_path
+      end
     end
-  end
+    #@event = Event.find(params[:id])
     
     private
     def event_params
       params.require(:event).permit(:title, :place, :image, :image_cache, :start_time, :end_time, :content)
-  end
+    end
   
-  def set_event
+    def set_event
       @event = Event.find(params[:id])
     end
   end

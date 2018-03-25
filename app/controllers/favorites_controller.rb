@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
     
-    def create
+  def create
     favorite = current_user.favorites.create(event_id: params[:event_id])
     flash[:success] = "#{favorite.event.user.name}さんのイベントをお気に入り登録しました"
     redirect_to events_url

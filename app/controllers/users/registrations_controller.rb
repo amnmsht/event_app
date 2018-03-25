@@ -12,9 +12,9 @@ def build_resource(hash={})
     @entries_events = @user.entry_events
       if @creates_events.where(':now < end_time', now: now).present?
       flash[:danger] = "公開中のイベントがある場合は退会できません。" 
-      redirect_to events_path
+    redirect_to events_path
     
-     elsif @entries_events.where(':now < end_time', now: now).present?
+    elsif @entries_events.where(':now < end_time', now: now).present?
       flash[:danger] = "参加申し込みしているイベントがある場合は退会できません。参加を取り消す必要があります。" 
       redirect_to events_path
     

@@ -7,11 +7,10 @@ class ApplicationController < ActionController::Base
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
   protected
-
+      #sign_upのときに、username,avatar_cacheも許可する
+      #account_updateのときに、username,avatar_cacheも許可する
     def configure_permitted_parameters
-      # sign_upのときに、username,avatar_cacheも許可する
       devise_parameter_sanitizer.permit(:sign_up, keys: PERMISSIBLE_ATTRIBUTES)
-      #  account_updateのときに、username,avatar_cacheも許可する
       devise_parameter_sanitizer.permit(:account_update, keys: PERMISSIBLE_ATTRIBUTES)
     end
   end

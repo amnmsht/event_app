@@ -1,106 +1,106 @@
 <div class="container show-container">
-<div class = "page-header">
-  <h1>
-    <%= @event.title %>
-  </h1>
-</div>
-<div class="row">
-  <div class="col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        このイベントのイメージ
+  <div class = "page-header">
+    <h1>
+      <%= @event.title %>
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          このイベントのイメージ
+        </div>
+        <div class="panel-body">
+          <%= image_tag(@event.image_url) if @event.image.present? %>
+        </div>
+        </div>    
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            イベントの主催者
+          </div>
+          <div class="panel-body">
+            <%= image_tag(@event.user.image_url) if @event.user.image_url.present? %>
+            <%= @event.user.name %>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            開催時間
+          </div>
+          <div class="panel-body">
+            <%= @event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= @event.end_time.strftime('%Y/%m/%d %H:%M') %>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            開催場所（住所）
+          </div>
+          <div class="panel-body">
+            <%= @event.place %>
+          </div>
+        </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          イベントの概要（お申込みいただくと主催者に参加メールが送信されます）
+        </div>
+        <div class="panel-body">
+          <%= @event.content %>
+        </div>
       </div>
-      <div class="panel-body">
-      <%= image_tag(@event.image_url) if @event.image.present? %>
-      </div>
-    </div>    
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        イベントの主催者
-      </div>
-      <div class="panel-body">
-        <%= image_tag(@event.user.image_url) if @event.user.image_url.present? %>
-        <%= @event.user.name %>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        開催時間
-      </div>
-      <div class="panel-body">
-        <%= @event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= @event.end_time.strftime('%Y/%m/%d %H:%M') %>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        開催場所（住所）
-      </div>
-      <div class="panel-body">
-        <%= @event.place %>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        イベントの概要（お申込みいただくと主催者に参加メールが送信されます）
-      </div>
-      <div class="panel-body">
-        <%= @event.content %>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        開催場所までのアクセス
-      </div>
-      <div class="panel-body">
-        <div id="map"></div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          開催場所までのアクセス
+        </div>
+        <div class="panel-body">
+          <div id="map"></div>
           <style>
-          #map {
-          height: 400px;
-          width: 100%;
-          }
+            #map {
+            height: 400px;
+            width: 100%;
+            }
           </style>
           <script>
             function initMap() {
-              var uluru = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
-              var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 16,
-              center: uluru
-              });
-              var marker = new google.maps.Marker({
-              position: uluru,
-              map: map
-              });
-              }
-          </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpJNOZ3g_RYqXK8fCOcq4736n-XHe-4W8&callback=initMap"
-      async defer></script>
+            var uluru = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: uluru
+            });
+            var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+            });
+            }
+         </script>
+         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpJNOZ3g_RYqXK8fCOcq4736n-XHe-4W8&callback=initMap"
+         async defer></script>
       </div>
     </div>     
   </div>
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        参加予定者
-      </div>
-      <div class ="panel-body">
-        <ul class="list=unstyled">
-          <% if @entries.present? %>
-          <% @entries.each do |entry| %>
-          <li>
-            <%= image_tag(entry.user.image_url, width: 20, height: 20) if entry.user.image_url.present?  %>
-            <%= entry.user.name %>
-            <%= entry.comment %>
-            <% end %>
-          </li>
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      参加予定者
+    </div>
+    <div class ="panel-body">
+      <ul class="list=unstyled">
+        <% if @entries.present? %>
+        <% @entries.each do |entry| %>
+        <li>
+          <%= image_tag(entry.user.image_url, width: 20, height: 20) if entry.user.image_url.present?  %>
+          <%= entry.user.name %>
+          <%= entry.comment %>
           <% end %>
-        </ul>
+        </li>
+        <% end %>
+      </ul>
       </div>
     </div>
     <hr>
     <% if current_user.id == @event.user_id %>
       <%= link_to "イベントを編集する",edit_event_path(@event),class:'btn btn-info btn-lg btn-block',data: { confirm: '本当に編集していいですか？' } %>
       <%= link_to "イベントを削除する",event_path(@event),class:'btn btn-danger btn-lg btn-block',method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-    <% end %>
+      <% end %>
     <% unless @event.user == current_user %>
     <% if @favorite.present? %>
       <%= link_to 'お気に入り解除する', favorite_path(event_id: @event.id), method: :delete, class:'btn btn-danger btn-lg btn-block' %>
@@ -111,27 +111,27 @@
       <%= link_to '参加をキャンセルする', entry_path(@event, @entry), method: :delete, class: 'btn btn-warning btn-lg btn-block' %>
     <% else @event.user == current_user %>
     <button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#createEntry">参加する</button>
-    <div class="modal fade" id="createEntry" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="dialogHeader">参加コメント</h4>
+      <div class="modal fade" id="createEntry" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="dialogHeader">参加コメント</h4>
+              </div>
+                <%= form_for(@event.entries.build, url: event_entries_path(@event), remote: true) do |f| %><!--event_path(@event)ではエラーになるため修正-->
+              <div class="modal-body">
+                <%= f.text_field :comment, class: 'form-control' %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                  <%= f.button '送信', class: 'btn btn-primary', data: { disable_with: '送信中…' } %>
+              </div>
+              <% end %>
             </div>
-              <%= form_for(@event.entries.build, url: event_entries_path(@event), remote: true) do |f| %><!--event_path(@event)ではエラーになるため修正-->
-            <div class="modal-body">
-              <%= f.text_field :comment, class: 'form-control' %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-              <%= f.button '送信', class: 'btn btn-primary', data: { disable_with: '送信中…' } %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
         <% end %>
       </div>
     </div>
-    <% end %>
   </div>
-</div>
-</div>

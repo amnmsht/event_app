@@ -2,10 +2,10 @@
 <html>
   <head>
     <title>Farmer'sサプリ</title>
-    <%= csrf_meta_tags %>
+      <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -24,30 +24,26 @@
             <!--<li><%= link_to "TOP",root_path %></li>-->
             <li><%= link_to "イベント一覧",events_path %></li>
             <li><%= link_to "Contat Us",new_contact_path %></li>
-            <% if user_signed_in? %> 
+              <% if user_signed_in? %> 
             <li><%= link_to "新規イベント",new_event_path %></li>            
             <li><%= link_to " 「#{current_user.name}さん」のマイページ", user_path(current_user.id) %></li>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <% else %>
+              <% else %>
             <li><%= link_to "サインアップ", new_user_registration_path %></li>
             <li><%= link_to "ログイン", new_user_session_path %></li>
-            <% end %>
+              <% end %>
           </ul>
         </div>
       </div>
     </nav>
-    
     <!--<div class="container">--><!--top画面いっぱいにjumbotronを適用させたいためコメントアウトした-->
-    
     <% flash.each do |key, value| %>
     <p><%= content_tag(:div, value, class: "alert alert-#{key}") %></P>
     <% end %>
     
     <%= yield %>
-    
     <!--</div>-->
-    
      <footer class="footer">
        <p>© Masahito amano</p>
      </footer>
