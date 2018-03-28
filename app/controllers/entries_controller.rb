@@ -1,9 +1,9 @@
 class EntriesController < ApplicationController
   
- def create
+  def create
     entry = current_user.entries.build do |t|
-    t.event_id = params[:event_id]
-    t.comment = params[:entry][:comment]
+      t.event_id = params[:event_id]
+      t.comment = params[:entry][:comment]
   end
   
   if entry.save
@@ -17,8 +17,8 @@ class EntriesController < ApplicationController
   end
   
   def destroy
-     @entry = current_user && current_user.entries.find_by(event_id: params[:id])
-     @entry.destroy
-     redirect_to event_path(params[:id]), notice: 'このイベントの参加をキャンセルしました'
+    @entry = current_user && current_user.entries.find_by(event_id: params[:id])
+    @entry.destroy
+    redirect_to event_path(params[:id]), notice: 'このイベントの参加をキャンセルしました'
   end
 end
