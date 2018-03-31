@@ -10,7 +10,6 @@ class EntriesController < ApplicationController
       flash[:notice] = "このイベントに申し込みました"
       head 201
     else
-      #render json: { messages: entry.errors.full_messages }, status: 422
       flash[:danger] = "コメントは30文字以内で入力してください"
     end
   end

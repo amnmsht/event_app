@@ -2,19 +2,16 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
     
-    PER = 5
-    
     def top
     end
-
-  #@events = Event.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time)←もとの状態    
+    
+    PER = 5
     def index
       @q = Event.ransack(params[:q])
       @events = @q.result(distinct: true)
       respond_to do |format|
       format.html { @events = @events.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time) }
     end
-  end
     
     def new
       @event = Event.new
@@ -31,7 +28,6 @@ class EventsController < ApplicationController
       end
     end
 
-    #@event = Event.find(params[:id])    
     def show
       @favorite = current_user.favorites.find_by(event_id: @event.id)
       @entry = current_user && current_user.entries.find_by(event_id: params[:id])
@@ -40,7 +36,6 @@ class EventsController < ApplicationController
     
     def edit
     end
-    #@event = Event.find(params[:id])
     
     def update
       if @event.update(event_params)
@@ -50,7 +45,6 @@ class EventsController < ApplicationController
         render :edit
       end
     end
-    #@event = Event.find(params[:id])    
   
     def destroy
       if @event.entries.present?
@@ -62,9 +56,9 @@ class EventsController < ApplicationController
         redirect_to events_path
       end
     end
-    #@event = Event.find(params[:id])
     
     private
+    
     def event_params
       params.require(:event).permit(:title, :place, :image, :image_cache, :start_time, :end_time, :content)
     end
@@ -73,4 +67,3 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
   end
-
