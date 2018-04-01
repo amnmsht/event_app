@@ -10,7 +10,8 @@ class EventsController < ApplicationController
     @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true)
     respond_to do |format|
-    format.html { @events = @events.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time) }
+      format.html { @events = @events.page(params[:page]).per(PER).where('start_time > ?',Time.zone.now).order(:start_time) }
+    end
   end
     
   def new
